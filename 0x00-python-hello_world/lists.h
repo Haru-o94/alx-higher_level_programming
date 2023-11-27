@@ -1,21 +1,25 @@
 #include "lists.h"
 
 /**
- * struct listint_s - link list
- * @n: int
- * @next: point to next node
+ * check_cycle - linked list
  *
- * Description: slist node
+ * Return: 1 if has cycle
  */
-typedef struct listint_s
+int check_cycle(listint_t *list)
 {
-    int n;
-    struct listint_s *next;
-} listint_t;
+	listint_t *slow = list;
+	listint_t *fast = list;
 
-size_t print_listint(const listint_t *h);
-listint_t *add_nodeint(listint_t **head, const int n);
-void free_listint(listint_t *head);
-int check_cycle(listint_t *list);
+	if (!list)
+		return (0);
 
-#endif /* LISTS_H */
+	while (slow && fast && fast->next)
+	{
+		slow = slow->next;
+		fast = fast->next->next;
+		if (slow == fast)
+			return (1);
+	}
+
+	return (0);
+}
