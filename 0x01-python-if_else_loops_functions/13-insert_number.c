@@ -1,6 +1,5 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "lists.h"
+
 /**
  * insert_node - add num in order
  * @head: head
